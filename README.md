@@ -132,3 +132,9 @@ crew-work-orders/
 
 Work orders here carry no prices by design — pricing belongs in your
 estimate system and customer proposal, never on a crew doc.
+
+## License
+
+MIT — see [LICENSE](LICENSE). The Resilient Retrofits name and logo in the
+example folder are their owner's property, included only as a worked
+configuration; swap in your own branding before shipping documents.
