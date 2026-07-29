@@ -5,6 +5,12 @@ reads this one file. Rules while filling it in: state what IS happening (no
 options, no "or"), no prices anywhere, and if a fact is unknown, go ask —
 a blank guessed at here becomes wasted crew time on-site.
 
+Write it in the crew voice (reference/content-rules.md has the full list):
+short sentences, one fact each. Actors do things ("WX opens the attic").
+Put the why next to every locked rule. Use the homeowner's name. Give every
+judgment call a STOP-and-call line naming your site contact. Save capital
+letters for the words that prevent an irreversible mistake (ONE, NOT, STOP).
+
 ## Job Info
 
 - Customer: {Full Name}
@@ -57,8 +63,18 @@ with the crew name bolded.
 | Day 2 (Tue) — {HEADLINE} | {crews} | {HVAC: item · WX: item} |
 | QC Day — {HEADLINE} | {assessor/lead} | {final test · walkthrough · sign-off} |
 
-- {booking rule — why the order is locked, e.g. "attic opens Day 1 so ducts run Day 2 before the blow"}
-- {booking rule}
+- {booking rule as a short story with the why — "The attic opens Day 1. Every duct runs Day 2 through the spots WX held open. Nothing gets sealed over until the ducts are in."}
+- {escalation rule — "If X runs past midday, call {site contact} before changing the rest of the week."}
+
+## Key Gates
+
+One line per day: the two or three facts that must be true before the next
+phase starts. The generator adds a sign-off blank to each. Put a fill-in
+inside the line for any number the crew must record.
+
+- {Day 1: space open · old equipment out · circuit live}
+- {Day 2: air seal complete · blower door result: __________ CFM50 (a pass starts the blow)}
+- {QC Day: every measure walked · homeowner signed off · photos sent to the office}
 
 ## Equipment Arriving
 
@@ -75,6 +91,7 @@ checklists/ for what exists (e.g. `hvac_ductless`, `attic`, `bath_fan`).
 ## Notes for Crew
 
 - {site-specific note worth reading before knocking on the door}
+- {prefix a note "hvac:" / "wx:" / "elec:" and it renders only on that trade's doc (the MASTER keeps everything)}
 
 ## Homeowner Walkthrough
 

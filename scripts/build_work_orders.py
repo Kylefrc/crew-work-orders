@@ -181,6 +181,7 @@ def load_job(job_dir):
 
     house = _bullets(_find_section(sections, 'the house'))
     concerns = _bullets(_find_section(sections, 'homeowner concerns'))
+    key_gates = _bullets(_find_section(sections, 'key gates'))
 
     checklist_override = [b.strip().lower().replace('-', '_') for b in
                           _bullets(_find_section(sections, 'checklists'))]
@@ -200,7 +201,7 @@ def load_job(job_dir):
         'scope_headers': display_headers, 'scope_rows': scope_rows,
         'day_headers': day_headers, 'day_rows': day_rows, 'booking_rules': booking_rules,
         'equip_headers': equip_headers, 'equip_rows': equip_rows,
-        'house': house, 'concerns': concerns,
+        'house': house, 'concerns': concerns, 'key_gates': key_gates,
         'checklist_override': checklist_override,
         'notes': notes, 'walkthrough': walkthrough,
         'text': blob, 'scope_text': scope_text,
@@ -335,7 +336,7 @@ def _doc_shell(brand, doc_type, job, install_value):
     rows = [
         ('Customer', info.get('customer', '')),
         ('Address', info.get('address', '')),
-        ('Phone', info.get('phone', '')),
+        ('Homeowner phone', info.get('phone', '')),
     ]
     if brand.cfg['crew_contact']:
         rows.append(('Questions on site', brand.cfg['crew_contact']))
@@ -378,11 +379,40 @@ def _equipment_table(brand, doc, job):
                     widths=_col_widths(len(job['equip_headers'])))
 
 
-def _notes(brand, doc, job):
-    if job['notes']:
+_TRADE_DAY_TOKENS = {
+    'hvac': ('hvac', 'mech'),
+    'wx': ('wx', 'weatherization'),
+    'elec': ('elec', 'electric'),
+}
+
+
+def _notes(brand, doc, job, trade=None):
+    """Notes for the crew. A note prefixed "hvac:" / "wx:" / "elec:" renders
+    only on that trade's doc (and the MASTER); unprefixed notes go everywhere."""
+    picked = []
+    for n in job['notes']:
+        m = _CREW_PREFIX_RE.match(n)
+        note_trade = TRADE_ALIASES.get(m.group(1).strip().lower()) if m else None
+        if note_trade and trade is not None and note_trade != trade:
+            continue
+        strip = m and note_trade and trade is not None
+        picked.append(m.group(2) if strip else n)
+    if picked:
         brand.heading(doc, 'Notes for Crew')
-        for n in job['notes']:
+        for n in picked:
             add_body(doc, '•  ' + n)
+
+
+def _trade_week(brand, doc, job, trade):
+    """"This Trade in the Install Week" — which days this crew is on site."""
+    tokens = _TRADE_DAY_TOKENS[trade]
+    days = [row[0] for row in job['day_rows']
+            if any(t in ' '.join(row[:2]).lower() for t in tokens)
+            or any(t + ':' in ' '.join(row[2:]).lower() for t in tokens)]
+    if days:
+        brand.heading(doc, 'This Trade in the Install Week')
+        for d in days:
+            add_body(doc, '•  ' + d)
 
 
 def _photos(brand, doc, job_dir, trade):
@@ -457,7 +487,15 @@ def build_master(brand, job, job_dir):
             add_body(doc, '•  ' + rule)
         add_body(doc, 'Book these dates:', bold=True)
         for row in job['day_rows']:
-            add_body(doc, f'   {row[0]}:  _______________________')
+            day = row[0]
+            if '—' in day:
+                head, tail = day.split('—', 1)
+                day = f'{head.strip()} · {tail.strip()}'
+            add_body(doc, f'   {day}:  _______________________')
+        if job['key_gates']:
+            brand.heading(doc, 'Key Gates — sign off before moving on')
+            for g in job['key_gates']:
+                add_checkbox(doc, f'{g}    ______  (crew lead / time)')
     else:
         print('  NOTE: no Day Plan in job.md — MASTER renders without a schedule. '
               'See reference/day-phasing.md to phase the job.')
@@ -498,13 +536,14 @@ def build_trade(brand, job, job_dir, trade, libs, selected):
         if _WH_ONLY_RE.search(hvac_text) and not _HP_RE.search(hvac_text):
             label = 'WATER HEATER'
     doc = _doc_shell(brand, f'{label} WORK ORDER', job, '___________________________')
+    _trade_week(brand, doc, job, trade)
     _scope_table(brand, doc, job, trade=trade)
     _equipment_table(brand, doc, job)
     for key in sorted(selected, key=lambda k: (libs[k]['order'], k)):
         lib = libs[key]
         if lib['applies'] in (trade, 'all'):
             _render_checklist(brand, doc, lib)
-    _notes(brand, doc, job)
+    _notes(brand, doc, job, trade=trade)
     _photos(brand, doc, job_dir, trade)
     brand.footer(doc)
     return doc, label

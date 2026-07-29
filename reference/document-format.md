@@ -40,16 +40,27 @@ a line on the install crew's doc; never spawn a doc nobody dispatches.
 5. **The House** (MASTER) — year, size, foundation, existing systems, structural notes
 6. **Homeowner Concerns** (MASTER) — what the customer cares about, incl. explicit "NOT in this scope (homeowner aware)" lines
 7. **Trades Summary** (MASTER) — one row per trade, what they own on this job
-8. **Schedule** (MASTER) — Day · Crews · Work table + booking-rule bullets + "Book these dates" blanks (see day-phasing.md)
-9. **Scope of Work** — table, no prices, specific specs and locations
-10. **Equipment Arriving** — item, model number, qty
-11. **Per-day checklists** (MASTER) — headline per day, crew-prefixed checkbox items, ending in a "DAY N DONE" gate + "photos sent to the office"
-12. **Quality checklists** (per-trade) — from the checklists/ libraries, auto-selected from scope
-13. **Notes for Crew**
-14. **Homeowner Walkthrough** — what the lead shows the customer before leaving
-15. **Reference Photos** — captioned grid
-16. **Completion Sign-Off** (MASTER) — crew lead, homeowner, final QC
-17. **Footer** — company · license · prepared by
+8. **Schedule** (MASTER) — Day · Crews · Work table + booking-rule bullets
+   (each rule a short story with the why) + "Book these dates" blanks with
+   the day headlines (see day-phasing.md)
+9. **Key Gates** (MASTER) — one sign-off line per day: the facts that must be
+   true before the next phase starts, with a crew-lead/time blank; recorded
+   numbers (blower door CFM50) get a fill-in inside the line
+10. **This Trade in the Install Week** (per-trade) — which days this crew is
+    on site, straight from the schedule
+11. **Scope of Work** — table, no prices, specific specs and locations
+12. **Equipment Arriving** — item, model number, qty
+13. **Per-day checklists** (MASTER) — headline per day, crew-prefixed
+    checkbox items, ending in a "DAY N DONE" gate + "photos sent to the office"
+14. **Quality checklists** (per-trade) — from the checklists/ libraries,
+    auto-selected from scope
+15. **Notes for Crew** — trade-prefixed notes ("hvac: …") land only on that
+    trade's doc; the MASTER keeps everything
+16. **Homeowner Walkthrough** — what the lead shows the customer before leaving
+17. **Reference Photos** — captioned grid; captions are instructions
+    ("Land the ONE new circuit here"), never descriptions
+18. **Completion Sign-Off** (MASTER) — crew lead, homeowner, final QC
+19. **Footer** — company · license · prepared by
 
 ## File naming
 

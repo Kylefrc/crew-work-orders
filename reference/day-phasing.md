@@ -50,11 +50,17 @@ Gas furnace → heat pump, attic air-seal + blow, minor electrical, ~700–1,100
 | Day 2 | HVAC · WX | HVAC: set heat pump + linesets, run range-hood + bath-fan ducts, commission · WX: finish air seal, seal around new ducts, prep attic · blower door · blow to spec |
 | QC Day | Assessor / lead | Final blower door · walk every measure · homeowner sign-off |
 
-Booking rules to copy into the master:
-- The attic opens Day 1 so every duct runs Day 2 before anything is sealed or blown.
-- Both install crews on site Days 1–2; install finishes Day 2.
-- Blow LAST — only after the air barrier verifies tight.
-- QC day is non-production.
+Booking rules to copy into the master — written as short stories with the
+why, in the crew voice:
+- The attic opens Day 1. Every duct runs Day 2 through the spots the WX crew
+  held open. Nothing gets sealed over or blown until the ducts are in.
+- One rule decides Day 2's order: air-seal, blower door, then blow.
+  Cellulose over a leaky plane is buried rework — the blower door proves the
+  plane tight before the machine starts.
+- Both install crews share the site Days 1–2. The whole install finishes Day 2.
+- The QC day is not a production day. Final numbers, full walkthrough, sign-off.
+- If the blower door fails midday, chase leaks and retest before blowing. If
+  that pushes past end of day, call the site contact before changing the week.
 
 ## Archetype B — manufactured home, belly + full electrify (5 production days + QC)
 
@@ -84,10 +90,15 @@ single-measure job (water heater only) is 1 day + a same-visit QC pass.
 
 ## The Schedule block
 
-Every MASTER carries: the **Day · Crews · Work table**, the **booking-rules
-bullets** (why the order is locked), and a **"Book these dates:"** fill-in
-line per day. The per-day sections then repeat as full checklists with a
-"DAY N COMPLETE" gate at the end of each.
+Every MASTER carries: the **Day · Crews · Work table** (give each day a
+headline in the Day cell — "Day 1 (Mon) — Furnace out + attic open"), the
+**booking-rules bullets** (each one a short story with the why, ending with
+an escalation rule that names the site contact), a **"Book these dates:"**
+fill-in line per day carrying the headline, and a **Key Gates** block — one
+sign-off line per day listing the facts that must be true before the next
+phase starts, with a blank for crew lead + time. The per-day sections then
+repeat as full checklists with a "DAY N DONE" gate and a photos-to-office
+line at the end of each.
 
 ## Capture your own archetypes
 

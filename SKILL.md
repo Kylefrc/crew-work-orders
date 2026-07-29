@@ -25,6 +25,25 @@ any fact is missing or ambiguous — ask the user. State what IS happening,
 never options. A wrong guess wastes a crew-day on-site; a question costs a
 minute. This rule outranks speed.
 
+## The voice
+
+Everything you write into a job file or work order uses the crew voice —
+`reference/content-rules.md` §Voice has the full list. The short version:
+
+- Short sentences. One fact each. "The belly opens first, on Day 1."
+- Actors do things: "WX opens the attic." "The electrician comes for one day."
+- The why rides with the rule: "A bigger breaker fails inspection."
+- The homeowner is a person with a name; care instructions (paths clear,
+  power back on nightly, comfort during no-heat windows) are work
+  instructions.
+- Every judgment call gets a STOP-and-call line naming the config's
+  site contact.
+- Caps only on the words that prevent an irreversible mistake: ONE, NOT,
+  STOP, DIFFERENT.
+- Pre-empt confusion: if paperwork could mislead ("two units with nearly the
+  same serial"), give the field rule ("count the systems on site").
+- Photo captions are instructions, not descriptions.
+
 ## Workflow: build a work order
 
 1. **Collect the job.** Create `jobs/{job-name}/` and copy

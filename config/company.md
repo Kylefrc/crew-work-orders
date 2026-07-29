@@ -7,7 +7,7 @@ see `examples/resilient-retrofits/company.md` for a filled-in real example.
 - company_name: Your Company Name
 - license_line: License # 000000
 - prepared_by: Your Name
-- crew_contact: Your Name — (555) 555-0100
+- crew_contact: Your Name, Project Manager — (555) 555-0100
 - logo: ../assets/logo-placeholder.png
 - color_primary: 1F4E79
 - color_accent: 6E8FAF

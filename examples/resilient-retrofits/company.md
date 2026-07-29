@@ -7,7 +7,7 @@ pattern to copy when your work gets inspected under a program.
 - company_name: Resilient Retrofits
 - license_line: CCB# 245539
 - prepared_by: Kyle Kanooth
-- crew_contact: Kyle — (503) 555-0117
+- crew_contact: Kyle Kanooth, Project Manager — (503) 555-0117
 - logo: assets/rr-logo-white.png
 - color_primary: 2D5016
 - color_accent: 7BA05B
